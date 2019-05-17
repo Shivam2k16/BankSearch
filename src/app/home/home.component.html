@@ -1,3 +1,32 @@
-<p>
-  home works!
-</p>
+<div class="text-capitalize container">
+  <br>
+  <label class="px-2  float-left">Select Page Size</label>
+  <select class="form-control float-left  col-md-1"  [(ngModel)]="pagesize">
+    <option value=5>5</option>
+    <option value=10>10</option>
+    <option value=20>20</option>
+    <option value=100>100</option>
+  </select>
+  <label class="px-2 float-left">Select City</label>
+  <select class="form-control float-left  col-md-2"  [(ngModel)]="cities" (change)="onSelect(cities)">
+    <option [value]="MUMBAI" value="MUMBAI">MUMBAI</option>
+    <option value="DELHI">DELHI</option>
+    <option value="BANGALORE">BANGALORE</option>
+    <option value="HYDERABAD">HYDERABAD</option>
+  </select>
+  <input class="ml-3 form-control col-md-6 float-left" type="text" placeholder="Search bank name here" [(ngModel)]="query" />
+  <br>
+  <br><br>
+  <div class="card shadow p-3 mb-5 bg-white col-md-12"> 
+  <div>
+  <table class="table table-borderless table-hover">
+  
+    <tr><th>banks</th><th>city</th><th>Mark As Favourite</th></tr>
+    <tr *ngFor="let song of data | banksfilter: query | paginate: { itemsPerPage: pagesize, currentPage: p }"><td class="pointer" routerLink="/banks/{{song.ifsc}}">{{song.bank_name}}</td><td>{{song.city}}</td><td><button class="btn btn-primary" (click)="addFav(song.ifsc,song.bank_name)">Mark<a *ngFor="let val of favouriteBanks"><a *ngIf="val.ifsc==song.ifsc"><a>ed</a></a></a></button></td></tr>
+  </table>
+  </div>
+  <p *ngIf="!data">Please wait, sorry for inconvenience ...</p>
+  <pagination-controls class="ml-5" (pageChange)="p = $event"></pagination-controls>
+  </div>
+  
+  </div>

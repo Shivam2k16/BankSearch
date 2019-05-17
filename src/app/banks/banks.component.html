@@ -1,3 +1,14 @@
-<p>
-  banks works!
-</p>
+<div class="text-capitalize container">
+  <div class="card m-5 shadow p-3 mb-5 bg-white">
+  <h6>Bank Info</h6>
+  
+  <table class="table">
+  
+    <tr>
+      <th *ngFor="let key of infokey">{{key}}</th>
+    </tr><tr *ngFor="let i of info"><td *ngFor="let key of infokey">{{i[key]}}</td></tr>
+    <p *ngIf="!infokey">Please wait, sorry for inconvenience ...</p>
+    </table>
+  </div>
+  
+  </div>
