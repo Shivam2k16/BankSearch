@@ -6,10 +6,10 @@
   <br><br>
   <div class="card shadow p-3 mb-5 bg-white"> 
   <h6 class="m-3">favourite banks</h6>
-  <table class="table">
+  <table class="table table-hover">
   
     <tr><th>banks</th><th>ifsc codes</th></tr>
-    <tr *ngFor="let song of favouriteBanks | banksfilter: query | paginate: { itemsPerPage: pagesize, currentPage: p }"><td routerLink="/banks/{{song.ifsc}}">{{song.bank_name}}</td><td>{{song.ifsc}}</td></tr>
+    <tr *ngFor="let song of favouriteBanks | banksfilter: query | paginate: { itemsPerPage: pagesize, currentPage: p }"><td class="pointer"  routerLink="/banks/{{song.ifsc}}">{{song.bank_name}}</td><td>{{song.ifsc}}</td></tr>
   </table>
   <p *ngIf="!favouriteBanks">Please wait, sorry for inconvenience ...</p>
   <pagination-controls class="ml-5" (pageChange)="p = $event"></pagination-controls>
